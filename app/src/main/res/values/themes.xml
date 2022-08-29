@@ -1,0 +1,55 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.ArchitectCoders" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_lt</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <!--        <item name="android:windowBackground">#FF252727</item>-->
+    </style>
+
+    <style name="Theme.LoginPicker" parent="Theme.ArchitectCoders">
+        <item name="android:textColorPrimary">?attr/colorPrimary</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="TextAppearance.App.CollapsingToolbar.Expanded" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.App.CollapsingToolbar.Collapsed" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Theme.ArchitectCoders.CollapsingToolBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="contentScrim">?attr/colorPrimary</item>
+        <item name="statusBarScrim">?attr/colorOnPrimary</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="navigationIconTint">@color/white</item>
+        <item name="collapsedTitleTextAppearance">
+            @style/TextAppearance.App.CollapsingToolbar.Collapsed
+        </item>
+        <item name="expandedTitleTextAppearance">
+            @style/TextAppearance.App.CollapsingToolbar.Expanded
+        </item>
+    </style>
+
+    <style name="Theme.ArchitectCoders.ShapeAbleImage" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSize">0%</item>
+        <item name="cornerSizeTopLeft">25%</item>
+        <item name="cornerSizeBottomRight">25%</item>
+    </style>
+
+</resources>

@@ -1,0 +1,101 @@
+import com.piroworkz.architectcoders.*
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.piroworkz.architectcoders"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "com.piroworkz.architectcoders.app.di.HiltTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(":domain")
+    implementation project(":usecases")
+    implementation project(":data")
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appCompat
+    implementation AndroidX.Views.materialDesign
+    implementation AndroidX.Views.constraintLayout
+    implementation AndroidX.Views.touchImageView
+    implementation AndroidX.Views.recyclerView
+    implementation AndroidX.legacySupport
+    implementation AndroidX.liveDataKtx
+    implementation AndroidX.viewModelKtx
+    implementation AndroidX.navigationFragmentKtx
+    implementation AndroidX.navigationUi
+    implementation AndroidX.workRuntime
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofitGsonConverter
+    implementation Retrofit.okHttp
+    implementation Glide.glide
+    implementation Room.runtime
+    implementation Room.ktx
+    implementation Firebase.authUi
+    implementation Firebase.firestore
+    implementation Firebase.messaging
+    implementation Firebase.facebookSdk
+    implementation Firebase.firebaseCoroutines
+    implementation Libs.googleLocationServices
+    implementation Libs.arrowEither
+    implementation Hilt.android
+    implementation Hilt.workManager
+    implementation project(":testshared")
+
+    kapt Hilt.compiler
+    kapt Hilt.workManagerKapt
+    kapt Glide.compiler
+    kapt Room.compiler
+
+    testImplementation project(":testshared")
+    testImplementation Testing.jUnit
+    testImplementation Testing.mockitoKotlin
+    testImplementation Testing.mockitoInline
+    testImplementation Kotlin.coroutinesTest
+    testImplementation Testing.truth
+    testImplementation Testing.turbine
+
+    androidTestImplementation project(":testshared")
+    androidTestImplementation Firebase.authUi
+    androidTestImplementation Kotlin.coroutinesTest
+    androidTestImplementation Testing.extJUnitKtx
+    androidTestImplementation Testing.espressoContrib
+    androidTestImplementation Testing.runner
+    androidTestImplementation Testing.rules
+    androidTestImplementation Retrofit.okHttp
+    androidTestImplementation Retrofit.mockWebServer
+    androidTestImplementation Hilt.testing
+    kaptAndroidTest Hilt.compiler
+}

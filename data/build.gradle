@@ -1,0 +1,28 @@
+import com.piroworkz.architectcoders.Kotlin
+import com.piroworkz.architectcoders.Libs
+import com.piroworkz.architectcoders.Testing
+
+
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation Kotlin.coroutinesCore
+    implementation Libs.javaxInject
+
+    testImplementation project(":testshared")
+    testImplementation Testing.jUnit
+    testImplementation Testing.mockitoKotlin
+    testImplementation Testing.mockitoInline
+    testImplementation Kotlin.coroutinesTest
+    testImplementation Testing.truth
+}

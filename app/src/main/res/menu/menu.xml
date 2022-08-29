@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/userProfileFragment"
+        android:icon="@drawable/ic_account_circle_24"
+        android:title="@string/user_profile_title" />
+    <item
+        android:id="@+id/userFavoritesFragment"
+        android:icon="@drawable/ic_favorite_24"
+        android:title="@string/user_favorites_title" />
+    <item
+        android:id="@+id/shoppingCartFragment"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="@string/user_shopping_cart_title" />
+    <item
+        android:id="@+id/signOutButton"
+        android:icon="@drawable/ic_logout_24"
+        android:title="@string/user_sign_out_title" />
+</menu>

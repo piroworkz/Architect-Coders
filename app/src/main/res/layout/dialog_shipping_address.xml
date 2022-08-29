@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="com.piroworkz.architectcoders.domain.PostalAddress" />
+
+        <import type="java.util.List" />
+
+        <import type="kotlin.Unit" />
+
+        <import type="com.piroworkz.architectcoders.domain.TextInputError" />
+
+        <variable
+            name="viewModel"
+            type="com.piroworkz.architectcoders.app.ui.profile.shipping.ShippingAddressDialogViewModel" />
+
+        <variable
+            name="address"
+            type="com.piroworkz.architectcoders.domain.PostalAddress" />
+
+        <variable
+            name="towns"
+            type="List&lt;java.lang.String>" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="saveAddress"
+            type="Function0&lt;Unit>" />
+
+        <variable
+            name="error"
+            type="com.piroworkz.architectcoders.domain.TextInputError" />
+
+        <variable
+            name="helper"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/shipping_address_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{loading == true ? View.GONE : View.VISIBLE}">
+
+                <LinearLayout
+                    android:id="@+id/addressLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{address != null ? View.VISIBLE : View.GONE}">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:hint="@string/street"
+                        android:maxLines="1"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:helperText="@{error == null ? @string/empty_string_error : null}"
+                        app:message="@{error}">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/streetET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeActionLabel="@string/street"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPostalAddress"
+                            app:addTextChangedListener="@{viewModel}"
+                            app:onError="@{error}"
+                            app:setOnFocusChangeListener="@{viewModel}" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:hint="@string/town"
+                        android:labelFor="@+id/townET"
+                        android:maxLines="1"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:helperText="@{error == null ? @string/empty_string_error : null}"
+                        app:message="@{error}">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/townET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            app:addTextChangedListener="@{viewModel}"
+                            app:onError="@{error}"
+                            app:setList="@{towns}"
+                            app:setOnFocusChangeListener="@{viewModel}"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@string/city" />
+
+                    <TextView
+                        android:id="@+id/cityET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{address.city}"
+                        android:textStyle="bold"
+                        tools:text="Lerma" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@string/state" />
+
+                    <TextView
+                        android:id="@+id/stateET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{address.state}"
+                        tools:text="México" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@string/zip_code" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{address.zipCode}"
+                        tools:text="México" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{address != null ? View.GONE : View.VISIBLE}">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/setHelperText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="8dp"
+                    android:labelFor="@id/zipCodeET"
+                    android:visibility="@{loading == true ? View.GONE : View.VISIBLE}"
+                    app:endIconMode="clear_text"
+                    app:message="@{error}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/zipCodeET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/zip_code"
+                        android:imeOptions="actionGo"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:text="@{address.zipCode}"
+                        app:addTextChangedListener="@{viewModel}"
+                        app:onError="@{error}"
+                        app:setOnFocusChangeListener="@{viewModel}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/loadingMerch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:progressTint="@color/primary"
+                    android:visibility="@{loading == true ? View.VISIBLE : View.GONE}" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{address == null ? View.GONE : View.VISIBLE}">
+
+                <CheckBox
+                    android:id="@+id/useSameAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:onCheckedChanged="@{()-> viewModel.onChecked()}"
+                    android:text="@string/use_same_address" />
+
+                <Button
+                    android:id="@+id/saveAddressButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:onClick="@{()-> saveAddress.invoke()}"
+                    android:text="@string/save" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

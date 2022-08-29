@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="cartSize"
+            type="Integer" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/actionLayout"
+        style="?attr/actionButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/badgeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_shopping_cart_24" />
+
+        <TextView
+            android:id="@+id/badgeTextView"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="end|top"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/badge_background"
+            android:gravity="center"
+            android:text="@{cartSize.toString()}"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="@{cartSize != 0 ? View.VISIBLE : View.GONE}" />
+
+    </FrameLayout>
+</layout>

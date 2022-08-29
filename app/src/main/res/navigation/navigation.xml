@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/splashAnimationFragment">
+
+    <fragment
+        android:id="@+id/splashAnimationFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.splash.SplashAnimationFragment"
+        android:label="SplashAnimationFragment"
+        tools:layout="@layout/fragment_splash_animation" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.login.LoginFragment"
+        android:label="FirebaseLoginFragment"
+        tools:layout="@layout/fragment_firebase_login" />
+    <fragment
+        android:id="@+id/mainStoreFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.store.StoreFragment"
+        android:label="MainStoreFragment"
+        tools:layout="@layout/fragment_main_store" />
+    <fragment
+        android:id="@+id/detailStoreFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.detail.fragment.DetailFragment"
+        android:label="DetailStoreFragment"
+        tools:layout="@layout/fragment_detail_store">
+        <argument
+            android:name="model"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/menuBottomSheetFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.menu.MenuDialog"
+        android:label="MenuBottomSheetFragment"
+        tools:layout="@layout/bottom_sheet_menu" />
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.profile.user.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/userFavoritesFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.favorites.FavoritesFragment"
+        android:label="@string/favorites_title"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.piroworkz.architectcoders.app.ui.shopping_cart.ShoppingCartFragment"
+        android:label="@string/shopping_cart_title"
+        tools:layout="@layout/fragment_shopping_cart" />
+
+    <action
+        android:id="@+id/action_to_detailFragment"
+        app:destination="@id/detailStoreFragment" />
+
+</navigation>

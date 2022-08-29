@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.piroworkz.architectcoders.domain.Product" />
+
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+            name="product"
+            type="com.piroworkz.architectcoders.domain.Product" />
+
+        <variable
+            name="openDialog"
+            type="Function0&lt;Unit>" />
+
+        <variable
+            name="shoppingCartSize"
+            type="Integer" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layoutCoordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".app.ui.detail.fragment.DetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/menu_detail"
+                app:navigationIcon="@drawable/ic_arrow_back_24"
+                app:title="@{product.title}" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="52dp">
+
+                <com.ortiz.touchview.TouchImageView
+                    android:id="@+id/photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/pinch_zoom"
+                    android:scaleType="fitCenter"
+                    app:loadImage="@{product.imageUrl}"
+                    tools:src="@drawable/dummie_tee" />
+
+                <ImageView
+                    android:id="@+id/pinchZoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="32dp"
+                    android:background="@drawable/pinch_anim" />
+            </FrameLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/openDetailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:backgroundTint="@color/white"
+            android:onClick="@{()-> openDialog.invoke()}"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_menu_36" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

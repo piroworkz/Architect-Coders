@@ -1,0 +1,34 @@
+import com.piroworkz.architectcoders.*
+
+apply plugin: "com.github.ben-manes.versions"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath Libs.androidGradlePlugin
+        classpath Kotlin.gradlePlugin
+        classpath Firebase.gmsGoogleServices
+        classpath AndroidX.navigationSafeArgs
+        classpath Hilt.gradlePlugin
+        classpath Libs.gradleVersionsPlugin
+    }
+}
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version)
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

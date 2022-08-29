@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.piroworkz.architectcoders.domain.Product" />
+
+        <import type="android.view.View" />
+
+        <import type="com.piroworkz.architectcoders.domain.Size" />
+
+        <import type="com.piroworkz.architectcoders.app.ui.detail.dialog.DetailDialogViewModel" />
+
+        <variable
+            name="product"
+            type="com.piroworkz.architectcoders.domain.Product" />
+
+        <variable
+            name="size"
+            type="com.piroworkz.architectcoders.domain.Size" />
+
+        <variable
+            name="pieces"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.piroworkz.architectcoders.app.ui.detail.dialog.DetailDialogViewModel" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:padding="4dp"
+        android:showDividers="middle"
+        app:behavior_draggable="true"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="48dp"
+        app:behavior_saveFlags="all"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <ImageView
+            android:id="@+id/openDetailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:backgroundTint="@color/white"
+            android:onClick="@{()-> viewModel.dismissDialog()}"
+            app:srcCompat="@drawable/ic_menu_36" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:justificationMode="inter_word"
+            android:text="@{product.description}"
+            android:textAlignment="center"
+            tools:targetApi="o"
+            tools:text="My description" />
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@{@string/price(product.price)}"
+            app:drawableStartCompat="@drawable/ic_price_tag_24"
+            app:drawableTint="@color/design_default_color_error"
+            tools:text="MX$279.00" />
+
+        <TextView
+            android:id="@+id/sizesTitle"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@{size != null ? size.value : @string/tallas_disponibles}"
+            tools:text="@string/tallas_disponibles" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/sizesChipGroup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="@{size != null ? View.GONE : View.VISIBLE}"
+            app:onChecked="@{viewModel}"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/smallSizeChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sm_size"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/mediumSizeChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/md_size"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/largeSizeChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/lrg_size"
+                android:textAlignment="center" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <LinearLayout
+            android:id="@+id/numberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="@{size != null ? View.VISIBLE : View.GONE}"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/sizeHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/enter_quantity"
+                android:textAlignment="center"
+                app:pieces="@{pieces}"
+                app:product="@{product}"
+                app:size="@{size}" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:divider="@drawable/divider_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:id="@+id/minusButton"
+                    style="@style/TextAppearance.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()-> viewModel.subtractFromPieces()}"
+                    android:src="@drawable/minus_circle_24" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp" />
+
+                <TextView
+                    android:id="@+id/quantitySelected"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@{String.valueOf(pieces)}" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp" />
+
+                <ImageView
+                    android:id="@+id/plusButton"
+                    style="@style/TextAppearance.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()-> viewModel.addToPieces()}"
+                    android:src="@drawable/plus_circle_24" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/changeSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:onClick="@{()-> viewModel.resetSize()}"
+                android:text="@string/change_size"
+                android:visibility="@{pieces == 0 ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{()-> viewModel.addToCart()}"
+            android:text="@string/add_to_cart"
+            android:visibility="@{pieces != 0 ? View.VISIBLE : View.GONE}"
+            app:icon="@drawable/ic_shopping_cart_24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

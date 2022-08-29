@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/firebase_auth_scene"
+        tools:context=".app.ui.login.LoginFragment">
+
+        <ImageView
+            android:id="@+id/spiral"
+            android:layout_width="900dp"
+            android:layout_height="900dp"
+            android:contentDescription="@string/spiral"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/spiral" />
+
+        <ImageView
+            android:id="@+id/circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/background_circle"
+            app:layout_constraintBottom_toBottomOf="@id/pwLogo"
+            app:layout_constraintEnd_toEndOf="@id/pwLogo"
+            app:layout_constraintStart_toStartOf="@id/pwLogo"
+            app:layout_constraintTop_toTopOf="@id/pwLogo"
+            app:srcCompat="@drawable/circle" />
+
+        <ImageView
+            android:id="@+id/pwLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/piroworkz_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/email_login_button"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/login_with_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/google_login_button"
+            style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/login_with_google"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_login_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/facebook_login_button"
+            style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/login_with_facebook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/google_login_button" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>
