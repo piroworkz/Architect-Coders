@@ -17,7 +17,7 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     private lateinit var binding: FragmentUserProfileBinding
     private lateinit var state: UserProfileState
 
-    private val viewModel: UserProfileViewModel by viewModels ()
+    private val viewModel: UserProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentUserProfileBinding.bind(view)
@@ -38,7 +38,8 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
             }
             editShippingAddressButton =
                 { state.openAddShippingAddressFragment(childFragmentManager) }
-            editPaymentButton = { state.openAddPaymentMethodDialog(childFragmentManager) }
+            editPaymentButton =
+                { state.openAddPaymentMethodDialog(childFragmentManager) }
         }
     }
 }

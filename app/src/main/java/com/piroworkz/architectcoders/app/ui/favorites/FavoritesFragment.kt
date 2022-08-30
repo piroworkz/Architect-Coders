@@ -28,7 +28,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFavoritesBinding.bind(view).apply {
-            toolbar.apply {
+            toolbar.apply {->
                 setupWithNavController(findNavController())
                 setOnMenuItemClickListener { onActionMenu() }
             }

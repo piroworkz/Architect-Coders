@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.fragment_detail_store) {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var state: DetailState
     private lateinit var binding: FragmentDetailStoreBinding

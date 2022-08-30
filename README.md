@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=CekasCAgnu0
 
 * App attempts to follow Android’s Guide to app architecture, Separation fo concerns, Drive UI from data models, Single source of truth and Unidirectional Data Flow.
 
-* Unit and integration testing. (UI testing is a work in progress, check back later)
+* Unit integration and Ui testing.
 
 
 ### Built with
@@ -43,4 +43,37 @@ https://www.youtube.com/watch?v=CekasCAgnu0
 * Mockito
 * Turbine
 * Truth
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+*To run this app you need to setUp a firebase project and
+add google-services.json file to app module, firebase project will provide products and banners for app store.
+
+*For Facebook sign in, you need to setup these variables:
+facebook_application_id
+facebook_client_token
+fb_login_protocol_scheme
+(You could also disable facebook auth provider in file: com.piroworkz.architectcoders.app.ui.login.AuthFirebase)
+
+*For GeoNamesService to work you need to create an account at: http://www.geonames.org/
+and add your username to the service query.
+
+*To be able to run Ui Tests you need to set up firebase emulators cli for authentication,
+you can find instructions on file : com.piroworkz.architectcoders.app.ui.login.MainUITest
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Installation
+
+Clone the repo
+   ```sh
+   git clone https://github.com/piroworkz/Architect-Coders.git
+   ```
+(project has only one branch)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

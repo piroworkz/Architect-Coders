@@ -16,7 +16,9 @@ class DetailDialog : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetDetailStoreBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var state: DetailDialogState
+    
     private val detailDialogViewModel: DetailDialogViewModel by viewModels()
 
     override fun onCreateView(

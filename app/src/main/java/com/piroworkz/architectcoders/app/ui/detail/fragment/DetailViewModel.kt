@@ -37,7 +37,6 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-
     private fun launchDataLoad(block: suspend () -> Unit) {
         viewModelScope.launch {
             try {

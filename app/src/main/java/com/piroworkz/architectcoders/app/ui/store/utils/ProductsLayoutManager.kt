@@ -1,4 +1,4 @@
-package com.piroworkz.piroworkzmvvm.app.ui.store.utils
+package com.piroworkz.architectcoders.app.ui.store.utils
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

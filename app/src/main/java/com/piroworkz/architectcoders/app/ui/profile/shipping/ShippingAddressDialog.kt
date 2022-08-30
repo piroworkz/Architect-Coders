@@ -27,16 +27,14 @@ class ShippingAddressDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogShippingAddressBinding.inflate(inflater, container, false)
-
         state = buildState()
-
         viewLifecycleOwner.collectFlow(viewModel.state) {
-            configDataBindingVariables(it)
             if (it.isSaved && it.useSameAddress) dismiss()
             if (it.isSaved && !it.useSameAddress) {
                 dismiss()
                 state.openAddBillingAddressDialog(parentFragmentManager)
             }
+            configDataBindingVariables(it)
         }
         return binding.root
     }

@@ -47,8 +47,8 @@ class BillingAddressDialog : BottomSheetDialogFragment() {
             towns = this@BillingAddressDialog.state.getList(state)
             saveAddress =
                 { this@BillingAddressDialog.viewModel.trySaveBillingAddressAddress(state) }
-            useSameAddress.visibility = View.GONE
             toolbar.title = getString(R.string.billing_address_title)
+            useSameAddress.visibility = View.GONE
         }
     }
 

@@ -34,7 +34,6 @@ class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
                 setOnMenuItemClickListener(::emptyShoppingCart)
             }
         }
-
         state = buildState()
 
         viewLifecycleOwner.collectFlow(viewModel.state) {

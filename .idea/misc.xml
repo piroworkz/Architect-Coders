@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/fragment_firebase_login.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_user_profile.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/header_user_profile.xml" value="0.37604166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

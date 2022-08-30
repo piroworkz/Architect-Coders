@@ -12,7 +12,7 @@ import com.piroworkz.architectcoders.app.ui.store.utils.BannersAdapter
 import com.piroworkz.architectcoders.app.ui.store.utils.BannersLayoutManager
 import com.piroworkz.architectcoders.app.ui.store.utils.ProductsAdapter
 import com.piroworkz.architectcoders.databinding.FragmentMainStoreBinding
-import com.piroworkz.piroworkzmvvm.app.ui.store.utils.ProductsLayoutManager
+import com.piroworkz.architectcoders.app.ui.store.utils.ProductsLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

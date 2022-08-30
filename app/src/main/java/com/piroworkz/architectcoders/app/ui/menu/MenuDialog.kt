@@ -26,16 +26,12 @@ class MenuDialog : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         state = buildState()
-
         _binding = BottomSheetMenuBinding.inflate(layoutInflater, container, false).apply {
             dismissDialog = { this@MenuDialog.dismiss() }
             navigationView.setNavigationItemSelectedListener(this@MenuDialog::onItemClick)
         }
-
         viewLifecycleOwner.collectFlow(viewModel.signOutState) { if (it) viewModel.signOut() }
-
         return binding.root
     }
 
